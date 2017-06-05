@@ -1,0 +1,60 @@
+	*{margin:0;
+			padding: 0;
+			}
+			ul{
+				list-style: none;
+				/*font-size: 40px;*/
+			}
+			.vipHeader{
+				/*width: 676px;*/
+				float: right;
+			}
+			.vipHeader>li{
+				float: left;
+				color: #666;
+				font-size: 12px;
+				line-height: 26px;
+			}
+			.vipHeader>li:not(:last-child):after{
+				content: "/";
+				margin-left: 20px;
+				margin-right: 20px;
+				color: #666;
+			}
+			.top-nav{
+				position: relative;
+    			z-index: 21;
+			    height: 28px;
+			    line-height: 26px;
+			    background-color: #f5f5f5;
+			    color: #777;
+			}
+
+				
+			.sanjiao{
+				width: 0;
+				height: 0;
+				border-top: 4px solid #999;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				display: inline-block;	
+				/*把块变成行内快*/
+				vertical-align: middle;			
+			}
+			img{
+				margin-top: -1px;
+				vertical-align: middle;
+			}
+			.list_content{
+				
+			list-style: none;
+			float: left;
+			/*text-align: center;
+			line-height: 40px;*/
+			/*display: none;*/
+			}
+			.xialilan:hover .list_content{ display:block; }
+			
+			.list_content li{
+				width: 72px;
+			}

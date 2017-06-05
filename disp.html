@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*加了点样式*/
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.disp {
+				margin: 0 auto;
+			}
+			
+			.disp>div {
+				float: left;
+				text-align: center;
+				font-size: 20px;
+			}
+			
+			h2 {
+				text-align: center;
+				font-size: 30px;
+				color: green;
+				width: 200px;
+				margin: 0 auto;
+				border-bottom: 4px double red;
+				margin-bottom: 8px;
+			}
+			
+			.gg {
+				width: 300px;
+				height: 40px;
+				text-align: center;
+				outline: 1px solid blueviolet;
+				line-height: 42px;
+				margin: 0 auto;
+				clear: both;
+				margin-top: 10px;
+			}
+			
+			button {
+				width: 90px;
+				height: 30px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>晓班的学生</h2>
+		<div class="disp"></div>
+		<div class="gg">
+			<button id="go">显示</button>
+			<button id="clear">清空</button>
+			<button id="back">返回</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//优化了一下,好看点
+		var disp = document.querySelector(".disp");
+		var lc = localStorage;
+		//说明,可以直接用id名设置元素的样式与事件操作
+		//var go = document.getElementById("go");
+		//var clear = document.getElementById("clear");
+		//var back = document.getElementById("back");
+		function ok() { //用于显示图片
+			//设置展示图片div的宽高
+			var temp = (lc.length) * 200 + "px";
+			disp.style.width = temp;
+			disp.style.backgroundColor = "pink";
+			for(var i = 0; i < lc.length; i++) {
+				//1.获取每一组json字符串
+				var str = lc.getItem(lc.key(i));
+				var girl = JSON.parse(str); //将字符串转成对象
+				var dv = document.createElement("div");
+				dv.style.width = '200px';
+				dv.style.height = '200px';
+				//2.新建一个元素
+				var img = document.createElement("img");
+				img.src = girl.src;
+				img.style.width = "120px";
+				img.style.height = "150px";
+				//3.新建一个元素
+				var n = document.createElement("p");
+				n.style.width = "200px";
+				n.style.height = "20px";
+				n.innerText = girl.name;
+				//4.新建一个元素
+				var a = document.createElement("p");
+				a.style.width = "200px";
+				a.style.height = "20px";
+				a.innerText = girl.age;
+				dv.appendChild(img);
+				dv.appendChild(n);
+				dv.appendChild(a);
+				//将生成的div再添加到一个大的div中
+				//disp的宽度根据取出的图片个数来设置
+				disp.appendChild(dv);
+			} //for
+
+		} //ok
+		//点击按钮调用方法显示图片,可以直接通过id号找到元素并添加事件
+		var flag = 0;
+		go.onclick = function() {
+				if(flag == 0) {//设置第一次点出效果
+					flag = 1;
+					ok();
+				}
+			}
+			//可以直接通过id号找到元素并添加事件
+		clear.onclick = function() {
+			lc.clear(); //清空数据
+			disp.innerHTML = ""; //重置显示为空
+			disp.style.height = 0;
+		}
+		back.onclick = function() {
+			location.href = "main.html";
+		}
+	</script>
+
+</html>

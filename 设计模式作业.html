@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>4种设计模式</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				font-family: "微软雅黑";
+			}
+			.box{
+				width: 300px;
+				height: 500px;
+				background-color: lightgreen;
+				display: inline-block;
+				float: left;
+				border: 3px solid white;
+				position: relative;
+			}
+			.box>h3{
+				text-align: center;
+			}
+			.explesion{
+				border: 1px solid white;
+			}
+			.container{
+				margin: 0 auto;
+				width: 1300px;
+			}
+			.printf{
+				position: absolute;
+				bottom: 20px;
+				left: 0;
+				background-color: #FFC0CB;
+				width: inherit;
+				height: 100px;
+				/*text-align: center;*/
+				/*line-height: 100px;*/
+			}
+			.btn{
+				position: absolute;
+				bottom: 140px;
+				width: 75px;
+				height: 40px;
+				left:120px;
+				background-color: #000000;
+				color: white;
+				text-align: center;
+				line-height: 40px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<div class="box"><h3>工厂模式</h3><div class="explesion">工厂模式的主体就是能返回一个对象的函数</div><div class="btn">点我</div><div class="printf"></div></div>
+		<div class="box"><h3>构造函数模式</h3><div class="explesion">构造函数模式就是创建一个“类”函数，所有new过此函数的实例中的变量会产生这个“类”函数内部变量一样的联系</div><div class="btn">点我</div><div class="printf"></div></div>
+		<div class="box"><h3>原型模式</h3><div class="explesion">原型模式就是在“类”函数的prototype上添加属性和方法，实例后的函数会自动继承这些属性和方法，因为会向原型链向上查找</div><div class="btn">点我</div><div class="printf"></div></div>
+		<div class="box"><h3>构造函数+原型模式</h3><div class="explesion">原型+构造函数的模式就是在构造函数中继承方法和属性，构造函数并不是空函数</div><div class="btn">点我</div><div class="printf"></div></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+			function log(){
+				return "姓名:"+ this.name+ "&nbsp" + "年龄:" + this.age+ "&nbsp"+"性别:"+this.sex ;
+			}
+			function Student(name, age,sex) { //普通函数
+			var o = new Object();
+			o.name = name;
+			o.age = age;
+			o.sex = sex;
+			o.tell = log;
+//			function() {
+//					//return "姓名:"+o.name+"年龄:"+o.age;
+//					return "姓名:" + this.name + "年龄:" + this.age+"性别:"+this.sex ;
+//				} //o.tell
+			return o; //返回对象
+		}
+		var student1 = Student('小雷', 19 ,"男"); //函数调用创建对象
+		var student2= Student('小明', 18 ,"男"); //函数调用创建对象
+		//要求显示到页面，此处老余显示控制台
+//		var str1 = student1.tell();
+//		var str2 = student2.tell();
+//		console.log(str1);
+//		console.log(str2);
+		//2.构造函数
+		function Girl(name, age ,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.tell = log;
+//			function() {
+//				return "姓名:" + this.name + "年龄:" + this.age+"性别:"+this.sex ;
+//			}
+		} //girl
+		var girl1 = new Girl('女生1', 20 ,'女');
+		var girl2 = new Girl('女生2', 17,'女');
+//		var str3 = o3.tell();
+//		console.log(str3);
+		//3.原型模式
+		function Boy(name, age,sex, tell) {} //Boy
+		Boy.prototype.name = "男生1,2";
+		Boy.prototype.age = 19;
+		Boy.prototype.sex = "男";
+		Boy.prototype.tell = log;
+		var boy1 = new Boy(); //不要带参数
+		var boy2 = new Boy();
+		
+		//4.构造与原型组合,一般有不同的属性，要共享相同的函数
+		function Teacher(name, age ,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		Teacher.prototype.tell = log;
+		var teacher1 = new Teacher('老刘', 28, "男" ); //此处要带参数
+		var teacher2 = new Teacher('老余', 44, "女" );
+		var arr=[student1,student2,girl1,girl2,boy1,boy2,teacher1,teacher2];
+		//dom阶段
+		var cont = document.getElementsByClassName("printf");
+		var btn = document.getElementsByClassName("btn");
+		for(var i=0;i<4;i++){
+			-function(j){
+				btn[j].onclick=function(){
+					cont[j].innerHTML=arr[j*2].tell()+"<br/>"+arr[j*2+1].tell();
+//					console.log(arr[j*2-1]);
+				}
+			}(i)
+		}
+		
+		
+				
+				
+			
+		
+		
+	</script>
+</html>

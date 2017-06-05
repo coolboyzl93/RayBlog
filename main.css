@@ -1,0 +1,253 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: "微软雅黑";
+}
+a{
+	text-decoration: none;
+}
+#main{
+	width: 1226px;
+	height: 500px;
+	border: 2px solid;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	background-image: url(img/mi.jpg);
+	/*background-position: center;*/
+	background-size: 1226px;
+	position: relative;
+}
+.left{
+	width: 234px;
+	height: 500px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	/*border: 1px solid red;*/
+	background: rgba(0,0,0,0.6);
+	font-size: 14px;
+}
+.left_ul{
+	height: 460px;
+	padding: 20px 0;
+	color: #FFFFFF;
+}
+.left_ul>li{
+	padding-left: 30px;
+	height: 46px;
+	line-height: 46px;
+}
+.left_ul>li>span{
+	float: right;
+	margin-right: 20px;
+}
+.left_ul>li:hover{
+	background-color: #ff6700;
+}
+.right_img{
+	position: absolute;
+	top: 0;
+	left: 234px;
+	height: 500px;
+	/*display: none;*/
+	/*border: 1px solid red;*/
+}
+.right_img1{
+	width: 876px;
+	background-color: #FFFFFF;
+	display: none;
+}
+.div1{
+	width: 288px;
+	height: 500px;
+	/*border: 1px solid blue;*/	
+	float: left;
+}
+.div1>ul>li,.div2>ul>li{
+	width: 260px;
+	padding: 18px 20px;
+	padding-right: 0;
+	height: 42px;
+	line-height: 42px;
+}
+.div1>ul>li>a,.div2>ul>li>a{
+	display: inline-block;
+	font-size: 16px;
+}
+.div1>ul>li>a,img,.div2>ul>li>a,img{
+	vertical-align: middle;
+}
+.xuangou{
+	width: 60px;
+	height: 24px;
+	border: 1px solid #ff6700;
+	color: #ff6700;
+	line-height: 24px;
+	text-align: center;
+	float: right;
+	margin-top: 10px;
+}
+.xuangou:hover{
+	background-color: #ff6700;
+	color: #FFFFFF;
+}
+.a1{
+	margin-left: 20px;
+}
+.right_img2{
+	width: 292px;
+	background-color: #FFFFFF;
+	display: none;
+}
+/*四个区块*/
+.w1226{
+	width: 1226px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.four{
+	height: 170px;
+	/*border: 1px solid red;*/
+	margin-top: 18px;
+}
+.four_left{
+	width: 234px;
+	height: 170px;
+	background-color: #5F5750;
+}
+.four_left>ul>li{
+	position: relative;
+    float: left;
+    width: 70px;
+    height: 82px;
+    padding: 0 3px;
+    padding-top: 18px;
+    margin-bottom: -24px;
+}
+.four_left>ul>li>img{
+	position: absolute;
+	left: 28px;
+}
+.four_left>ul>li>p{
+	font-size: 14px;
+	text-align: center;
+	color: #CFC9C7;
+	margin-top: 24px;
+}
+.leftli:after{
+	content: "";
+	width: 1px;
+	position: absolute;
+	background-color: #665e57;
+	left: 0;
+	top: 6px;
+	height: 70px;
+}
+.topli:before{
+	content: "";
+	width: 1px;
+	position: absolute;
+	background-color: #665e57;
+	left: 6px;
+	top: -1px;
+	width: 64px;
+	height: 1px;
+}
+.four>div{
+	float: left;
+}
+.four_img{
+	margin-left: 14px;
+}
+/*小米明星单品*/
+.star{
+	margin-top: 26px;
+	height: 58px;
+	line-height: 58px;
+	font-size: 22px;
+	font-weight: 50 !important;
+	color: #333;
+	position: relative;
+}
+.star>p,.star>div{
+	float: left;
+}
+.star_a{
+	display: inline-block;
+	width: 24px;
+    height: 16px;
+    padding: 3px 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #b0b0b0;
+}
+.starBtn{
+	position: absolute;
+	right: 0;
+}
+.star_a:first-child{
+	margin-right: -8px;
+	border-right: 0px;
+}
+.star_a:hover{
+	color: #ff6700;
+}
+/*五个图片*/
+.five>.five_img{
+	width: 234px;
+	height: 300px;
+	float: left;
+	/*border: 1px solid red;*/
+	text-align: center;
+	padding-top: 40px;
+	box-sizing: border-box;
+	background-color: #fafafa;
+}
+.p1{
+	font-size: 16px;
+}
+.p2{
+	margin: 10px 20px 12px;
+    font-size: 12px;
+	color: #b0b0b0;
+}
+.p3{
+	color: #ff6700;
+}
+.five_img:nth-of-type(1){
+	border-top: 1px solid orangered;
+}
+.five_img:nth-of-type(2){
+	border-top: 1px solid green;
+}
+.five_img:nth-of-type(3){
+	border-top: 1px solid blue;
+}
+.five_img:nth-of-type(4){
+	border-top: 1px solid red;
+}
+.five_img:nth-of-type(5){
+	border-top: 1px solid pink;
+}
+.margin_l{
+	margin-left: 14px;
+}
+.zhineng{
+	margin-top: 70px;
+}
+.zhineng_left{
+	width: 234px;
+	height: 614px;
+	border: 1px solid;
+	display: inline-block;
+}
+.zhineng_right{
+	width: 900px;
+	height: 614px;
+	display: inline-block;
+	border: 1px solid;
+}

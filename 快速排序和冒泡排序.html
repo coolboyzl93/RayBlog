@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1 {
+				margin: 0 auto;
+				text-align: center;
+				border: 1px dotted black;
+				background: gray;
+				color: white
+			}
+			
+			.arrtext {
+				background: lightgreen;
+			}
+			ul{
+				list-style: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="box1">
+			<h1>简单算法</h1>
+			<p>An array is[20,23,45,12,76,98,56,11,89],what do you want to do?</p>
+			<p class="arrtext"></p>
+			<button class="h1btn">odd number</button>
+			<button class="h1btn">adjacent natural number</button>
+			<button class="h1btn">quick sort</button>
+		</div>
+		<div class="box1" style="position: relative;">
+		<ul class="jqbtn-group" style="float:left">
+			<li><button>select "没事的" of span</button></li>
+			<li><button>select span of ul</button></li>
+			<li><button>select brothers of the back of "div" </button></li>
+			<li><button>the4button</button></li>
+			<li><button>the5button</button></li>
+			<li><button>the6button</button></li>
+			<li><button>the7button</button></li>
+			
+		</ul>
+			<h1>JQuery选择器</h1>
+			<ul class="hw2">
+				<li>娱乐</li>
+				<li>音乐</li>
+				<li>视频
+					<span>人生如若初见</span>
+				</li>
+				<div>又找元素,烦不烦
+					<span>没事的</span>
+				</div>
+				<li>读书</li>
+				<span>一片冰心在玉壶</span>
+				<li>关于</li>
+				<span>二分流水</span>
+			</ul>
+		</div>
+		<!--在归类的时候应该优先以class归类，如果使用id去归类，则该名称应该在语义化的同时，具有非同寻常的唯一性，比如：当前时间-->
+
+	</body>
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		var arr = [20, 23, 45, 12, 76, 98, 56, 11, 89];
+		var str = "";
+		var adjanum="";
+		var sort_arr=quickSort(arr);
+		var totalArr=[str,adjanum,sort_arr];
+		$.each(arr, function(index, value) {
+
+			if(value % 2 != 0) {
+				str += value + ",";
+				//						console.log(str);
+			}
+
+		});
+		
+		$.each(arr, function(i, valuei) {
+			$.each(arr, function(j, valuej) {
+			if(valuej-valuei==1) {
+				adjanum+=valuei+",";
+				adjanum+=valuej+",";
+				
+			}
+
+		});
+		});
+		var totalArr=[str,adjanum,sort_arr];
+		console.log(totalArr)
+		function quickSort(arr){
+			if(arr.length<=1){return arr;}
+			var basicIndex=Math.floor(arr.length/2);	
+		 	var basicEle=arr.splice(basicIndex,1)[0];
+//		 	console.log(arr);
+		 	var left=[];
+		 	var right=[];
+		 	for(var i= 0;i<arr.length;i++){
+		 		if (basicEle>=arr[i]) {
+		 			left.push(arr[i]);
+		 		} else{
+		 			right.push(arr[i]);
+		 		}
+		 	}
+			
+			return quickSort(left).concat([basicEle],quickSort(right));
+			
+			
+		}
+
+//		console.log(quickSort([5,4,3,3,2,1,]))
+		
+		
+		
+		for(var i=0;i<3;i++){
+			-function(i){
+				
+			
+		$(".h1btn").eq(i).click(function() {
+
+			$(".arrtext").eq(0).html(totalArr[i].toString());
+
+		});
+			}(i)
+		}
+	
+		//accurat search
+		$(".jqbtn-group button").eq(0).click(function(){
+			$("span:contains('没事的')").css({ "color": "red" })
+		})
+		$(".jqbtn-group button").eq(1).click(function(){
+			$("ul").children("span").css({ "color": "blue", "font-size": "25px" });
+		})
+		$(".jqbtn-group button").eq(2).click(function(){
+			$(".hw2 div").nextAll().css({ "color": "green", "font-size": "28px" });
+		})
+		$(".jqbtn-group button").eq(3).click(function(){
+			$("span:contains('没事的')").css({ "color": "red" })
+		})
+		$(".jqbtn-group button").eq(4).click(function(){
+			$("span:contains('没事的')").css({ "color": "red" })
+		})
+		$(".jqbtn-group button").eq(5).click(function(){
+			$("span:contains('没事的')").css({ "color": "red" })
+		})
+		$(".jqbtn-group button").eq(6).click(function(){
+			$("span:contains('没事的')").css({ "color": "red" })
+		})
+	
+		//jquery's .css method is: 
+		//(1)when you want many properties to change,you should use-> .css({"property":"value"});[highly recommended!!!]
+		//(2)when you just want to change one property, you can use this grammar-> .css("property","value");
+//		$("ul").children("span").css({ "color": "blue", "font-size": "25px" });
+		//the purpose of 'children()'method is"find the children elements but not any known element". 
+		//		$("ul>span").css({"color":"blue","font-size":"25px"});
+		
+	</script>
+
+</html>
