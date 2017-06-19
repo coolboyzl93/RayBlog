@@ -1,8 +1,8 @@
 		-function(){
-		var mm = ["//pmt3359e0.pic28.websiteonline.cn/upload/04_ypxe.jpg",
-						"//pmt3359e0.pic28.websiteonline.cn/upload/002_ih7m.jpg", 
-						"//pmt3359e0.pic28.websiteonline.cn/upload/03_vte6.jpg",
-						"//pmt3359e0.pic28.websiteonline.cn/upload/0001_1cdm.jpg", 
+		var mm = ["http://pmt3359e0.pic28.websiteonline.cn/upload/04_ypxe.jpg",
+						"http://pmt3359e0.pic28.websiteonline.cn/upload/002_ih7m.jpg", 
+						"http://pmt3359e0.pic28.websiteonline.cn/upload/03_vte6.jpg",
+						"http://pmt3359e0.pic28.websiteonline.cn/upload/0001_1cdm.jpg", 
 						];
 		var index = mm.length - 1;
 		var fg = 0; //标识
