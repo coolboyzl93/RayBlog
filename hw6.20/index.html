@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding:0;font-size: 16px ; font-family: "微软雅黑";}
+
+body{font-size:12px;}
+
+img{border:none;}
+
+li{list-style:none;}
+
+input,select,textarea{outline:none;}
+
+textarea{resize:none;}
+
+a{text-decoration:none;}
+		body>div{
+			background: lightsteelblue;
+			height: 400px;
+			margin-bottom: 10px;
+		}
+		div:nth-of-type(1)>ul>li{
+			float: left;
+			margin: 10px;
+			background: red;
+			color: white;
+			font-size: 20px;
+		}
+		div:nth-of-type(1)>ul>li>ul{
+			display: none;
+		}
+		div:nth-of-type(1)>ul>li:hover{
+			background: lightgreen;
+			color: white;
+			cursor: pointer;
+		
+		}
+		div:nth-of-type(1)>ul>li>ul>li{
+			background: gray;
+		}
+		div:nth-of-type(2) a{
+			display: inline-block;
+			font-size: 20px;
+			background: black;
+			color: whitesmoke;
+			margin: 10px;
+		}
+		#cv {
+				border: 2px solid red;
+				/*初始化一张背景图片*/
+				/*此处可以不要*/
+				/*background: url(../jpeg/mm1.jpg) no-repeat;*/
+				/*background-position: center;*/
+				/*background-size: cover;*/
+			}
+			
+			#replay {
+				width: 100px;
+				height: 30px;
+				font-size: 20px;
+				display: block;
+				margin: 0 auto;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div ><h1>(1)下拉菜单</h1>
+			<ul>
+				<li class="caidan">菜单一
+					<ul class="caidanItem">
+						<li>listA1</li>
+						<li>listA2</li>
+						<li>listA3</li>
+					</ul>
+				</li>
+				<li  class="caidan">菜单二
+					<ul class="caidanItem">
+						<li>listB1</li>
+						<li>listB2</li>
+						<li>listB3</li>
+					</ul>
+				</li>
+				<li  class="caidan">菜单三
+					<ul class="caidanItem">
+						<li>listC1</li>
+						<li>listC2</li>
+						<li>listC3</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<div><h1>(2)内联框架的应用</h1>
+			<iframe id="yourIframe" name="myIframe" width="400" height="300"></iframe><br />
+			<a href="http://www.cctv.com/" target="myIframe" >央视</a>
+			<a href="http://www.ifeng.com/" target="myIframe" >凤凰</a> 
+			<a href="http://www.sina.com.cn/" target="myIframe" >新浪</a>
+			<span>注意事项：iframe中的name属性对应a标签中的target属性！</span>
+		</div>
+		<div><h1>(3)热点的应用</h1>
+			<img src="http://www.runoob.com/try/demo_source/planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+			
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" href="http://www.runoob.com/try/demo_source/sun.htm" alt="Sun">
+  <area shape="circle" coords="90,58,3" href="http://www.runoob.com/try/demo_source/mercur.htm" alt="Mercury">
+  <area shape="circle" coords="124,58,8" href="http://www.runoob.com/try/demo_source/venus.htm" alt="Venus">
+</map><p>注意：根据浏览器不同 map中的name或者id对应img中的usemap;<br/>usemap的属性值前缀有个#。</p>
+		</div>
+		<div><h1>(4)刮刮卡</h1>
+			<canvas id="cv" width="300px" height="300px"></canvas>
+		<button id="replay">重玩</button>
+		</div>
+		<div class="gouzao"><h1>(5)构造函数的应用</h1>
+			<p ></p><p ></p><p ></p><button>点我出现人物属性</button>
+		</div>
+		<div class="ajaxOfJquery"><h1>(6)ajax应用</h1>
+			<p></p>
+			<button>点我获得天气</button>
+			
+		</div>
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//下拉菜单
+			var bigLi=document.getElementsByClassName("caidan");
+			var	smallUl=document.getElementsByClassName("caidanItem");
+			
+			
+			for(var i=0;i<3;i++){
+				-function(i){			
+				bigLi[i].onmouseover=function(){
+					smallUl[i].style.display="block"
+				}
+				bigLi[i].onmouseout=function(){
+					smallUl[i].style.display="none"
+				}
+				
+				}(i)
+		}
+			for(var j=0;j<9;j++){
+				-function(j){
+				
+				$(".caidanItem>li").eq(j).mouseover(function(){
+					$(".caidanItem>li").eq(j).css({"background":"blueviolet"})
+				})
+					
+				
+				$(".caidanItem>li").eq(j).mouseout(function(){
+					$(".caidanItem>li").eq(j).css({"background":"gray"})
+				})
+				}(j);
+				}
+			//刮刮卡
+			var cv = document.getElementById("cv");
+        var rep = document.getElementById("replay");
+        var mm = ["img/mi1.jpg","img/mi2.jpg","img/mi3.jpg"];
+		function init() { //初始化绘制一个矩形
+			var fg = Math.floor(Math.random()*3);
+			//设置背景图片及其样式
+			cv.style.background="url("+mm[fg]+")no-repeat";
+			cv.style.backgroundPosition="center";
+			cv.style.backgroundSize="cover";
+			var ctx = cv.getContext("2d");
+			//重新设置为绘制状态
+			ctx.globalCompositeOperation="source-over";
+			ctx.beginPath();
+			ctx.fillStyle = "pink";
+			//ctx.rect(0,0,300,300);
+			//绘制颜色将背景盖住
+			ctx.fillRect(0, 0, 300, 300);
+			//ctx.fill();
+			ctx.closePath();
+		}
+		//初始化操作
+		init();
+		//实现抹除颜色的操作
+		var mouseDown = false; //用于判断鼠标是否按下
+		cv.onmousedown = function() {
+			mouseDown = true;
+		};
+		cv.onmouseup = function() {
+			mouseDown = false;
+		}
+		var i = 0;
+		cv.onmousemove = function(a) {
+			var ev = a||window.event;
+			if(mouseDown) {//鼠标按下并移动的操作
+			//以下实现擦除
+			//计算鼠标在画布中移动时画心的坐标
+			var cx = ev.pageX-cv.offsetLeft;
+			var cy = ev.pageY-cv.offsetTop;
+			var ctx = cv.getContext("2d");
+			ctx.beginPath();
+			//此处设置画笔的状态,此处为橡皮形式的画笔
+			//"source-over"表示绘制是默认方式,"destination-out"表示擦除
+			ctx.globalCompositeOperation="destination-out";
+			ctx.fillStyle="white";
+			//ctx.fillRect(cx,cy,40,40);
+			ctx.arc(cx,cy,40,0,7);
+			//设置橡皮的外观即位置
+			ctx.fill();
+			ctx.closePath();
+			}//if
+		}//onmusemove
+		///////重玩//////
+		rep.onclick = function(){
+			 init();//重新初始化
+		};
+		
+		//构造函数的应用
+		function Person(name,age,sex){
+			this.name=name;
+			this.age=age;
+			this.sex=sex;
+		}
+		
+		Person.prototype.getValue=function(){
+			return " 名字："+this.name+" 年龄："+this.age+"性别："+this.sex
+		}
+		var naruto=new Person("naruto",16,"male");
+		var saski=new Person("saski",16,"male");
+		var sakula=new Person("sakula",16,"female");
+		var personMessage=[naruto.getValue(),saski.getValue(),sakula.getValue()]
+		$(".gouzao>button").click(function(){
+			for(var i=0;i<3;i++){
+				$(".gouzao>p").eq(i).text(personMessage[i])
+			}
+		})
+		//JQuery`s ajax
+		$(".ajaxOfJquery>button").click(function(){
+		$(".ajaxOfJquery>p").load("demo_test.txt");
+		
+	});
+		</script>
+	</body>
+</html>
