@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>測試页面</title>
+		<style type="text/css">
+			.box {
+				height: 500px;
+				background: lightblue;
+				position: relative;
+			}
+			
+			.inner_box {
+				width: 200px;
+				height: 200px;
+				background: lightgreen;
+				position: absolute;
+				top: calc(50% - 100px);
+				left: calc(50% - 100px);
+				color: whitesmoke;
+			}
+			
+			.hidden_box {
+				/*display: none;*/
+				background: gray;
+				position: absolute;
+				text-align: center;
+			}
+			
+			.watchBox {
+				width: 100px;
+				height: 100px;
+				background: lightcoral;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="inner_box">
+				<div class="hidden_box"></div>
+			</div>
+
+			<div class="watchBox"></div>
+		</div>
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".inner_box").mouseenter(function(ev) {
+				$(".watchBox").text(ev.pageX + "和" + ev.pageY + "__" + ev.offsetX + "和" + ev.offsetY);
+				var x = ev.offsetX;
+				var y = ev.offsetY;
+
+				if(x > y && (x + y) < 200) {
+
+					$(".hidden_box").animate({ height: "50px", width: "200px", top: "0", left: "0" }, "slow").text("上")
+
+				}
+
+				if(x < y && (x + y) < 200) {
+
+					$(".hidden_box").animate({ height: "200px", width: "50px", left: "0", top: "0" }, "slow").text("左");
+
+				}
+				if(x < y && (x + y) > 200) {
+
+					$(".hidden_box").animate({ height: "50px", width: "200px", top: "150px", left: "0" }, "slow").text("下")
+
+				}
+				if(x > y && (x + y) > 200) {
+
+					$(".hidden_box").animate({ height: "200px", width: "50px", left: "150px", top: "0" }, "slow").text("右");
+
+				}
+				return false
+			});
+			$(".inner_box").mouseleave(function() {
+				$(".hidden_box").animate({ height: "0", width: "0", }, "slow").text("");
+
+				return false
+			})
+		</script>
+	</body>
+
+</html>
