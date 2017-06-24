@@ -5,6 +5,37 @@
 		<meta charset="utf-8" />
 		<title>測試页面</title>
 		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 20px;
+			}
+			
+			img {
+				border: none;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			input,
+			select,
+			textarea {
+				outline: none;
+			}
+			
+			textarea {
+				resize: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
 			.box {
 				height: 500px;
 				background: lightblue;
@@ -14,12 +45,13 @@
 			.inner_box {
 				width: 200px;
 				height: 200px;
-				background: lightgreen;
-				position: absolute;
-				top: calc(50% - 100px);
-				left: calc(50% - 100px);
+				background-image: url(img/bcLOL_4.cut.jpg);
+				background-size: 100%;
+				position: relative;
+				display: inline-block;
 				color: whitesmoke;
 				overflow: hidden;
+				margin: 20px;
 			}
 			
 			.hidden_box {
@@ -33,7 +65,7 @@
 				width: 100px;
 				height: 100px;
 				background: lightcoral;
-				position: absolute;
+				position: relative;
 				top: 0;
 				left: 0;
 			}
@@ -42,47 +74,74 @@
 
 	<body>
 		<div class="box">
-			<div class="inner_box">
-				<div class="hidden_box"></div>
-			</div>
+			<ul>
+				<li>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+				</li>
+			</ul>
 
 			<div class="watchBox"></div>
 		</div>
 		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			$(".inner_box").mouseenter(function(ev) {
-				$(".watchBox").text(ev.pageX + "和" + ev.pageY + "__" + ev.offsetX + "和" + ev.offsetY);
-				var x = ev.offsetX;
-				var y = ev.offsetY;
+			for(var i = 0; i < $(".inner_box").length; i++) {
+				- function(i) {
 
-				if(x > y && (x + y) < 200) {
+					$(".inner_box").eq(i).mouseenter(function(ev) {
+						$(".watchBox").text(ev.pageX + "和" + ev.pageY + "__" + ev.offsetX + "和" + ev.offsetY);
+						var x = ev.offsetX;
+						var y = ev.offsetY;
 
-					$(".hidden_box").css({"width":"200px", "top": "0", "left": "0"}).animate({ height: "50px"}, "slow").text("上")
+						if(x > y && (x + y) < 200) {
 
-				}
+							$(".hidden_box").eq(i).css({ "width": "200px", "top": "0", "left": "0" }).animate({ height: "50px" }, "slow").text("上")
 
-				if(x < y && (x + y) < 200) {
+						}
 
-					$(".hidden_box").css({"height":"200px", "left": "0", "top": "0"}).animate({ width: "50px" }, "slow").text("左");
+						if(x < y && (x + y) < 200) {
 
-				}
-				if(x < y && (x + y) > 200) {
+							$(".hidden_box").eq(i).css({ "height": "200px", "left": "0", "top": "0" }).animate({ width: "50px" }, "slow").text("左");
 
-					$(".hidden_box").css({"width":"200px", "top": "200px", "left": "0","height":"50px"}).animate({ top: "150px" }, "slow").text("下")
+						}
+						if(x < y && (x + y) > 200) {
 
-				}
-				if(x > y && (x + y) > 200) {
+							$(".hidden_box").eq(i).css({ "width": "200px", "top": "200px", "left": "0", "height": "50px" }).animate({ top: "150px" }, "slow").text("下")
 
-					$(".hidden_box").css({"height":"200px", "left": "200px", "top": "0","width":"50px"}).animate({  left: "150px"}, "slow").text("右");
+						}
+						if(x > y && (x + y) > 200) {
 
-				}
-				return false
-			});
-			$(".inner_box").mouseleave(function() {
-				$(".hidden_box").css({ "height": "0", "width": "0" }).text("");
+							$(".hidden_box").eq(i).css({ "height": "200px", "left": "200px", "top": "0", "width": "50px" }).animate({ left: "150px" }, "slow").text("右");
 
-				return false
-			})
+						}
+						return false
+					});
+					$(".inner_box").eq(i).mouseleave(function() {
+						$(".hidden_box").eq(i).css({ "height": "0", "width": "0" }).text("");
+
+						return false
+					})
+					//应该写一个更通用的函数来定义一个对象上的方法，此方法可以使所有图像对象都有此方法。
+					//			for (var i=0;i<$(".inner_box").length;i++) {
+					//				-function (i) {
+
+				}(i)
+				//此处我来想象一下面向对象的方法来搞定这个东西
+			
+			}
 		</script>
 	</body>
 
