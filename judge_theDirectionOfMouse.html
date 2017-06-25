@@ -37,7 +37,7 @@
 			}
 			
 			.box {
-				height: 500px;
+				height: 700px;
 				background: lightblue;
 				position: relative;
 			}
@@ -51,14 +51,18 @@
 				display: inline-block;
 				color: whitesmoke;
 				overflow: hidden;
-				margin: 20px;
+				/*margin: 20px;*/
 			}
 			
 			.hidden_box {
 				/*display: none;*/
-				background: gray;
+				display: none;
+				height: 50px;
+				width: 200px;
+				background: rgba(0,0,0,0.5);
 				position: absolute;
 				text-align: center;
+				
 			}
 			
 			.watchBox {
@@ -76,10 +80,38 @@
 		<div class="box">
 			<ul>
 				<li>
+					
 					<div class="inner_box">
 						<div class="hidden_box"></div>
 					</div>
 					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+					<div class="inner_box">
+						<div class="hidden_box"></div>
+					</div>
+						<div class="inner_box">
 						<div class="hidden_box"></div>
 					</div>
 					<div class="inner_box">
@@ -108,31 +140,31 @@
 
 						if(x > y && (x + y) < 200) {
 
-							$(".hidden_box").eq(i).css({ "width": "200px", "top": "0", "left": "0" }).animate({ height: "50px" }, "slow").text("上")
+							$(".hidden_box").eq(i).css({  "display":"block","bottom": "50px", "left": "0" }).animate({bottom:"0px" }, "slow").text("上")
 
 						}
 
 						if(x < y && (x + y) < 200) {
 
-							$(".hidden_box").eq(i).css({ "height": "200px", "left": "0", "top": "0" }).animate({ width: "50px" }, "slow").text("左");
+							$(".hidden_box").eq(i).css({  "display":"block","bottom": "0px", "left": "-200px"}).animate({left:"0" }, "slow").text("左");
 
 						}
 						if(x < y && (x + y) > 200) {
 
-							$(".hidden_box").eq(i).css({ "width": "200px", "top": "200px", "left": "0", "height": "50px" }).animate({ top: "150px" }, "slow").text("下")
+							$(".hidden_box").eq(i).css({  "display":"block","bottom": "-50px", "left": "0"}).animate({ bottom: "0px" }, "slow").text("下")
 
 						}
 						if(x > y && (x + y) > 200) {
 
-							$(".hidden_box").eq(i).css({ "height": "200px", "left": "200px", "top": "0", "width": "50px" }).animate({ left: "150px" }, "slow").text("右");
+							$(".hidden_box").eq(i).css({  "display":"block","bottom": "0px", "left": "200px" }).animate({ left: "0" }, "slow").text("右");
 
 						}
-						return false
+//						return false
 					});
 					$(".inner_box").eq(i).mouseleave(function() {
-						$(".hidden_box").eq(i).css({ "height": "0", "width": "0" }).text("");
+						$(".hidden_box").eq(i).css({ "display":"none" }).text("");
 
-						return false
+//						return false
 					})
 					//应该写一个更通用的函数来定义一个对象上的方法，此方法可以使所有图像对象都有此方法。
 					//			for (var i=0;i<$(".inner_box").length;i++) {
