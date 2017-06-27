@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    html {
+		    	height: 100%;
+		    }
+			body {
+				margin: 0;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.box {
+				width: 300px;
+				height: 300px;
+				background: #333;
+				border-radius: 50px;
+				box-shadow: 0 0 5px #999;
+				
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.circle {
+				width: 80%;
+				height: 80%;
+				border-radius: 50%;
+				background: #fff;
+				box-shadow: 0 0 10px #555 inset;
+				position: relative;
+			}
+			.hourBox {
+				width: 14px;
+				height: 50%;
+				position: absolute;
+				top: calc(50% - 25%);
+				left: calc(50% - 7px);
+			}
+			.hour {
+				width: 100%;
+				height: 50%;
+				background: #333333;
+				border-radius: 3px;
+			}
+			.minuteBox {
+				width: 10px;
+				height: 70%;
+				position: absolute;
+				top: calc(50% - 35%);
+				left: calc(50% - 5px);
+			}
+			.minute {
+				width: 100%;
+				height: 50%;
+				background: #333333;
+				border-radius: 3px;
+			}
+			
+			.secondBox {
+				width: 6px;
+				height: 90%;
+				position: absolute;
+				top: calc(50% - 45%);
+				left: calc(50% - 3px);
+				
+			}
+			.second {
+				width: 100%;
+				height: 50%;
+				background: #333333;
+				border-radius: 2px;
+			}
+			
+			.point {
+				width: 30px;
+				height: 30px;
+				background: #333333;
+				border-radius: 50%;
+				position: absolute;
+				top: calc(50% - 15px);
+				left: calc(50% - 15px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.smallCircle {
+				width: 20px;
+				height: 20px;
+				background: #FFFFFF;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+		//面向对象狗
+		//第一步，抽象出来公用的属性/方法，以及变化的参数，找到他们的继承方式，将它们放在一个构造函数中。
+		function Box (boxFather,boxClass) {
+			that=this;
+			this.boxClass=boxClass;
+			this.boxFather=boxFather;
+			this.creDiv=function () {
+				return document.createElement("div");
+			}
+			this.dom=this.creDiv();
+			this.divPosition=function(){
+				document.querySelector(that.boxFather).appendChild(that.dom);	
+			}
+			this.dom.className=this.boxClass;
+			this.divPosition();
+			}
+		var outerBox = new Box("body","box");
+		var circle=new Box(".box","circle");
+		var hourBox=new Box(".circle","hourBox");
+		var hour=new Box(".hourBox","hour");
+		var minuteBox=new Box(".circle","minuteBox");
+		var minute=new Box(".minuteBox","minute");
+		var secondBox=new Box(".circle","secondBox");
+		var second= new Box(".secondBox","second");
+		var point=new Box(".circle","point");
+		var circle=new Box(".point","smallCircle");
+
+//		function createBox() {
+//			var box = document.createElement('div')
+//			document.body.appendChild(box)
+//			box.className = 'box'
+//		}
+//		createBox()
+//		
+//		function createCircle(){
+//			var circle = document.createElement('div')
+//			document.querySelector('.box').appendChild(circle)
+//			circle.className = 'circle'
+//		}
+//		createCircle()
+//		
+//		function createHour(){
+//			var hourBox = document.createElement('div')
+//			document.querySelector('.circle').appendChild(hourBox)
+//			hourBox.className = 'hourBox'
+//			var hour = document.createElement('div')
+//			hourBox.appendChild(hour)
+//			hour.className = 'hour'
+//		}
+//		createHour()
+//		
+//		function createMinute(){
+//			var minuteBox = document.createElement('div')
+//			document.querySelector('.circle').appendChild(minuteBox)
+//			minuteBox.className = 'minuteBox'
+//			var minute = document.createElement('div')
+//			minuteBox.appendChild(minute)
+//			minute.className = 'minute'
+//		}
+//		createMinute()
+//		
+//		function createSecond(){
+//			var secondBox = document.createElement('div')
+//			document.querySelector('.circle').appendChild(secondBox)
+//			secondBox.className = 'secondBox'
+//			var second = document.createElement('div')
+//			secondBox.appendChild(second)
+//			second.className = 'second'
+//		}
+//		createSecond()
+//		
+//		function createPoint(){
+//			var point = document.createElement('div')
+//			document.querySelector('.circle').appendChild(point)
+//			point.className = 'point'
+//			var circle = document.createElement('div')
+//			point.appendChild(circle)
+//			circle.className = 'smallCircle'
+//		}
+//		createPoint()
+		
+		function getTime(){
+			var time = new Date()
+			var hour = time.getHours() % 12
+			var minute = time.getMinutes()
+			var second = time.getSeconds()
+			var sDeg = (360 / 60) * second
+			var mDeg = (360 / 3600) * (minute * 60 + second)
+			var hDeg = (360 / (3600 * 12)) * (hour * 60 * 60 + minute * 60 + second)
+			
+			document.querySelector('.secondBox').style.transform = 'rotate(' + sDeg + 'deg)'
+			document.querySelector('.minuteBox').style.transform = 'rotate(' + mDeg + 'deg)'
+			document.querySelector('.hourBox').style.transform = 'rotate(' + hDeg + 'deg)'
+		}
+		getTime()
+		setInterval(getTime, 1000)
+		
+		//次例子是一个面向过程的程序
+		//面向过程的程序：
+		//变量  + 方法 ，面向过程的编程注重的是代码的执行顺序，
+		//按照步骤，每一步需要做什么，来声明变量或方法，在执行过程中，
+		//去来回的调用变量或方法
+	</script>
+
+</html>
