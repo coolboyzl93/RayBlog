@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/jQuery.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+			}
+			p{
+				padding: 10px;
+			}
+			
+			img {
+				border: none;
+				width: 70px;
+				height: 70px;
+			}
+			
+			li {
+				list-style: none;
+				border-left: 1px solid white;
+			}
+			
+			input,
+			select,
+			textarea {
+				outline: none;
+			}
+			
+			textarea {
+				resize: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.weatherContainer {
+				width: 700px;
+				height: 350px;
+				background: linear-gradient(to bottom, purple, pink);
+				color: white;
+				text-align: center;
+			}
+			
+			.today {
+				display: inline-block;
+				width: 230px;
+				height: 300px;
+				float: left;
+			}
+			
+			ul>li {
+				float: left;
+				padding: 10px;
+			}
+			.weatherHeader{
+				text-align: left;
+			}
+			#num{
+				font-size: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="weatherContainer">
+			<div class="weatherHeader">
+				<p class="date"></p>
+				<p class="air"></p>
+			</div>
+			<div class="weatherContext">
+				<div class="today">
+					<p><img class="todayIcon" src="" /></p>
+					<p class="curTime">
+						<span id="num">
+							
+						</span>
+						<span id="fuhao">
+							
+						</span>
+					</p>
+					<div class="commonInfo">
+						<p></p>
+						<p></p>
+						<p></p>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="smallHeader">
+							<p></p>
+							<p></p>
+						</div>
+						<div><img class="futureIcons" src="" /></div>
+						<div class="commonInfo">
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</li>
+					<li>
+						<div class="smallHeader">
+							<p></p>
+							<p></p>
+						</div>
+						<div><img class="futureIcons" src="" /></div>
+						<div class="commonInfo">
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</li>
+					<li>
+						<div class="smallHeader">
+							<p></p>
+							<p></p>
+						</div>
+						<div><img class="futureIcons" src="" /></div>
+						<div class="commonInfo">
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</li>
+					<li>
+						<div class="smallHeader">
+							<p></p>
+							<p></p>
+						</div>
+						<div><img class="futureIcons" src="" /></div>
+						<div class="commonInfo">
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		$.get({
+			url: 'http://api.map.baidu.com/telematics/v3/weather',
+			dataType: 'jsonp',
+			data: {
+				location: "上海",
+				output: 'json',
+				ak: 'iw5m2G7ayDow8ofDdDGVUMB3',
+				mcode: 'com.BaiduWeather'
+			}
+		}, function(res) {
+			console.log(res.results[0]);
+			console.log(res.results[0].weather_data);
+			console.log(res.results[0].weather_data[0].date.split(" "));
+			$(".date").text(res.results[0].weather_data[0].date)
+			$(".air").text("实时空气质量：" + res.results[0].pm25)
+			$(".todayIcon").attr("src", res.results[0].weather_data[0].dayPictureUrl)
+			$(".curTime>#num").text(res.results[0].weather_data[0].date.split(" ")[2].split("：")[1].match(/\d+/g));
+			$(".curTime>#fuhao").text(res.results[0].weather_data[0].date.split(" ")[2].split("：")[1].split(")")[0].match(/\D+/g))
+			console.log(res.results[0].weather_data[0].date.split(" ")[2].split("：")[1].match(/\d+/g));
+			var dateArr=res.results[0].weather_data[0].date.split(" ");
+			var keys = [];
+//			for(var key in res.results[0].weather_data[0]) {
+//
+//				keys.push(key);
+//
+//			}
+			
+			console.log(keys);
+
+			for(var i = 0; i < 4; i++) {
+				
+
+					$(".commonInfo").eq(i).children("p").eq(0).text(res.results[0].weather_data[i].temperature);
+					$(".commonInfo").eq(i).children("p").eq(1).text(res.results[0].weather_data[i].weather);
+					$(".commonInfo").eq(i).children("p").eq(2).text(res.results[0].weather_data[i].wind);
+					
+					
+				
+
+			}
+			var now= new Date();
+			var month = now.getMonth();//得到月份
+			var nowDate = now.getDate();//得到日期
+			console.log(month+1+":"+nowDate);
+			for(var i = 0; i < 3; i++) {
+				
+
+					
+					$(".smallHeader").eq(i).children("p").eq(0).text(res.results[0].weather_data[i+1].date.split(" ")[0])
+					$(".smallHeader").eq(i).children("p").eq(1).text("0"+(month+2)+"月"+"0"+(i+1)+"日");
+					$(".futureIcons").eq(i).attr("src", res.results[0].weather_data[i+1].dayPictureUrl)
+				
+				
+
+			}
+			console.log(res.results[0].weather_data[1])
+			console.log(res.results[0].weather_data[1].date.split(" ")[1])
+			
+		})
+	</script>
+
+</html>
