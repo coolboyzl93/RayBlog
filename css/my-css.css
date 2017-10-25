@@ -1,0 +1,18 @@
+
+#doc-content{
+	background: #FCFAF2;
+	line-height: 1.7;
+	font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+	/*font-size: 14px;*/
+}
+#doc-content blockquote{
+	background-color: #F5F5F5;
+}
+.ray-active {
+	background-color: #6D9FE6;
+	font-weight: bolder;
+}
+.ray-active a{
+	color:#fff;
+	text-decoration: none;
+}

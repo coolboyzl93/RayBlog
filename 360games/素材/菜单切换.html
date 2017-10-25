@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>菜单切换</title>
+        <link rel="stylesheet" href=""/>
+        <style>
+            body {
+                background-color: #f0f0f0;
+            }
+            
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: relative;
+            }
+            
+            ul li {
+                height: 30px;
+                float: left;
+            }
+            
+            
+            #a1 {
+                width: 500px;
+                height: 459px;
+                background-color: #fff;
+                position:absolute;
+                border: 1px solid #888;
+                display: none;
+            }
+            
+            #b1,#c1,#d1,#e1 {
+                width: 500px;
+                height: 459px;
+                background-color: #fff;
+                position:absolute;
+                display:none;
+                border: 1px solid #888;
+                opacity: 0.5;
+                left: 0;
+            }
+            
+            #a:hover #a1,#b:hover #b1,#c:hover #c1,#d:hover #d1,#e:hover #e1 {
+                display: block;
+            } 
+            
+            li a {
+                width: 100px;
+                padding: 10px 0;
+                text-align: center;
+                color: #fff;
+                background-color: #000;
+                text-decoration: none;
+                display: block;
+            }
+            
+            li a:hover {
+                color: #000;
+                background-color: #fff;
+                
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="a">
+            <div class="b">
+                <ul>
+                    <li id="a">
+                        <a href="">侯文涛1</a>
+                        <div id="a1">aa</div>
+                    </li>
+                    
+                    <li id="b">
+                        <a href="">侯文涛2</a>
+                        <div id="b1">bb</div>
+                    </li>
+                    
+                    <li id="c">
+                        <a href="">侯文涛3</a>
+                        <div id="c1">cc</div>
+                    </li>
+                    
+                    <li id="d">
+                        <a href="">侯文涛4</a>
+                        <div id="d1">dd</div>
+                    </li>
+                    
+                    <li id="e">
+                        <a href="">侯文涛5</a>
+                        <div id="e1">ee</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

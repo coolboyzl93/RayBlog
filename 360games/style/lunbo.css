@@ -1,0 +1,63 @@
+﻿.lubo ul, .lubo li{ 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    }
+    
+  .lubo{
+     width: 100%; 
+     min-width: 1200px;
+     position: relative; 
+     height:368px;
+     margin: 0px auto;
+     
+     }
+     
+  .lubo_box{ 
+    position: relative; 
+    width: 100%; 
+    height:368px; 
+    }
+    
+  .lubo_box li{ 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; 
+    height:368px; 
+    opacity: 0;
+    filter:alpha(opacity=0);
+    }
+    
+  .lubo_box li a{ 
+    display: block;
+    width: 100%;  
+    height: 100%;
+    }
+
+  .lubo_box li img{ 
+    width: 100%; 
+    height: 368px;
+    }
+
+  .cir_box{ 
+    /*overflow: hidden; */
+    position: absolute; 
+    z-index: 100;
+    top: 340px;
+    }
+  .cir_box li{ 
+    float: left; 
+    width: 40px; 
+    height: 10px; 
+    margin: 0 10px; 
+    /*border-radius: 50%;*/
+    cursor: pointer; 
+    background: #000; 
+    opacity: 0.5;
+    filter:alpha(opacity=20);
+    }
+    
+  .cir_on{ 
+    background: #fff !important;
+    }
+

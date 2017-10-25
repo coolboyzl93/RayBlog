@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>graph</title>
+	<style type="text/css">
+		div{
+			width: 500px;
+			height: 200px;
+			border-left: solid 1px black;
+			border-bottom: solid 1px black;
+			position: relative;
+			margin: 0 auto;
+
+		}
+		.y{
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+		.x{
+			position: absolute;
+			right:  0;
+			bottom: 0;
+		}
+		canvas{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class='selectionSort'>
+		<span class="x">运算量</span>
+		<span class="y">时间</span>
+		<canvas id='selectionSort' height="180" width="450" ></canvas>
+	</div>
+	
+</body>
+<script type="text/javascript" src="selectionSort.js"></script>
+<script type="text/javascript" src="insertSort.js"></script>
+<script type="text/javascript" src="quickSort.js"></script>
+<script type="text/javascript" src="mergeSort.js"></script>
+<script type="text/javascript" src="heapSort.js"></script>
+<script type="text/javascript">
+	
+var c=document.getElementById("selectionSort");
+var cxt=c.getContext("2d");
+
+function drawCoordinate(lowX,upX,callback){
+	var n=upX/lowX;
+	var upY=efficiency(callback,sortTestHelper(upX,lowX,upX));
+	var lowY=efficiency(callback,sortTestHelper(upX/n,lowX,upX/n));
+	cxt.moveTo(0,180);
+	for(var i=1;i<n;i++){
+	var result=efficiency(callback,sortTestHelper(upX/n*i,lowX,upX/n*i));
+	//需要把排序数组的数量和运行时间转化成对应的坐标
+	cxt.lineTo(450/n*i,180-180/upY*result);
+	}
+	cxt.font = "normal 10px 微软雅黑";//字体
+	cxt.fillText(upX, 400, 160);
+	cxt.fillText(upX/n, 10, 160)//绘制文字
+	cxt.fillText(upY, 10, 10)
+	cxt.fillText(lowY, 10, 170)
+	cxt.stroke();
+	console.log(upY);
+	
+}
+ var timeOfDraw = efficiency(drawCoordinate,1000,200000,mergeSort);
+ // console.log(timeOfDraw);
+// drawCoordinate(10,10000,heapSort);
+
+var guding=sortTestHelper(100000,0,1000000);
+// console.log(efficiency(insertSort,guding));
+// console.log(efficiency(insertion_sort,guding));
+console.log(efficiency(quickSort2,guding));
+console.log(efficiency(quickSort3,guding));
+console.log(efficiency(quickSort3R,guding));
+console.log(efficiency(quickSort3RInsert,guding));
+console.log(efficiency(mergeSort,guding));
+// console.log(efficiency(heapSort,guding));
+
+
+
+
+
+
+</script>
+</html>

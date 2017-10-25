@@ -1,0 +1,13 @@
+{
+  "name": "Ray-work",
+  "version": "1.0.0",
+  "description": "myGithubBloog",
+  "main": "index.js",
+  "repository": "https://github.com/coolboyzl93/RayBlog.git",
+  "author": "1214641362@qq.com",
+  "license": "MIT",
+  "private": null,
+  "scripts": {
+    "view": "browser-sync start --server --files \"js/*.js, *.html"
+  }
+}

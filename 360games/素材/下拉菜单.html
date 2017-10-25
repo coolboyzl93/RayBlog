@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>下拉菜单</title>
+        <style>
+            .a {
+                text-align: center;
+                color: #fff;
+                position: relative;
+                display: inline-block;
+            }
+            
+            .a1 {
+                width: 500px;
+                height: 300px;
+                background-color: #f5f5f5;
+                position: absolute;
+                top: 40px;
+                display: none;
+                opacity: 1;
+                z-index: -1;
+            }
+            
+            #b,#d {
+                margin: 0px -5px;
+            }
+            
+            #b1 {
+                margin-left: -100px;
+            }
+            
+            #c1 {
+                margin-left: -200px;
+            }
+            
+            #d1 {
+                margin-left: -300px;
+            }
+            
+            #e1 {
+                margin-left: -400px;
+            }
+            
+            .btn {
+                width: 100px;
+                color: #fff;
+                text-decoration: none;
+                background-color: #555;
+                padding: 10px 0;
+                display: inline-block;
+            }
+            
+            .btn:hover {
+                background-color: #ff0066;
+            }
+                        
+            ul {
+                padding: 0;
+                list-style-type: none;
+            }
+            
+            ul a {
+                text-align: left;
+                color: #555;
+                text-decoration: none;
+                padding: 5px 10px;
+                display: block;
+            }
+            
+            ul a:hover {
+                background-color: #ff0066;
+                color: #fff;
+            }
+            
+            ul a:hover .a1{
+                display: block;
+            }
+            
+            ul a:link .a1 {
+                display: block;
+            }
+            
+            ul a:active .a1 {
+                display: block;
+            }
+            
+            ul a:visited .a1{
+                display: block;
+            }
+            
+            .a:hover .a1 {
+                display: block;
+            }
+            
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        <div class="a" id="a">
+            <a href="" class="btn">下拉菜单</a>
+            <div class="a1" id="a1">
+                <ul>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                    <a href="#"><li>下拉菜单aaaaa</li></a>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="a" id="b">
+            <a href="" class="btn">下拉菜单</a>
+            <div class="a1" id="b1">
+                <ul>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                    <a href=""><li>bbbbb</li></a>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="a" id="c">
+            <a href="" class="btn">下拉菜单</a>
+            <div class="a1" id="c1">
+                <ul>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                    <a href=""><li>ccccc</li></a>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="a" id="d">
+            <a href="" class="btn">下拉菜单</a>
+            <div class="a1"id="d1">
+                <ul>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                    <a href=""><li>ddddd</li></a>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="a"id="e">
+            <a href="" class="btn">下拉菜单</a>
+            <div class="a1" id="e1">
+                <ul>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                    <a href=""><li>eeeee</li></a>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

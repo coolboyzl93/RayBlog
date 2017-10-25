@@ -1,0 +1,15 @@
+张雷 Ray
+=======
+<br>
+- **照片**：<img width="50%" src="img/me2.png">  
+- **性别**：男  
+- **年龄**：25
+- **毕业院校**：东华大学，211本科
+- **在校时间**：2013~2017
+- **邮箱**：rayzhang_js@163.com
+- **电话**：15000797283
+- **现居地**：上海·松江
+- **到岗时间**：随时
+- **github**：<a href="https://github.com/coolboyzl93">coolboyzl93</a>
+- **微信号**：zl_thanksforcoming
+ 
